@@ -1,0 +1,49 @@
+.header{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
+    flex-direction: column;
+    color: rgb(255, 255, 0);
+    span:first-child{
+        font-size: 3rem;
+        animation: animateHeading 0.5s linear;
+        letter-spacing: 5px;
+    }
+    span:last-child{
+        animation: animateDesc 0.5s linear;
+        letter-spacing: 2px;
+    }
+}
+
+
+@keyframes animateHeading {
+    0%{
+        transform: scale(0);
+        opacity: 0.5;
+        color: tomato;
+    }
+    100%{
+        transform: scale(1);
+        color: orange;
+        opacity: 1;
+    }
+}
+
+@keyframes animateDesc {
+    0%{
+        transform: translateY(10rem);
+        opacity: 0.5;
+        color: tomato;
+    }
+    50%{
+        transform: translate(0) scale(0.7);
+        opacity: 1;
+        color: pink;
+    }
+    100%{
+        transform: scale(1);
+        color: orange;
+    }
+}

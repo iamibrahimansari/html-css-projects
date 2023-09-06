@@ -1,0 +1,138 @@
+@mixin flexBox($arg1,$arg2){
+    display: $arg1;
+    flex-direction: $arg2;
+}
+
+@mixin linkOrButton($bgColor){
+    padding: 1rem 3rem;
+    border: none;
+    background-color: $bgColor;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@mixin positionMixin($top, $left, $right, $bottom, $position, $bgColor){
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+    background-color: $bgColor;
+    position: $position;
+}
+
+.slider{
+    height: 61vh;
+    border-top: 1px solid #ddd;
+    padding: 2rem 2rem 5rem 2rem;
+    .project{
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        &-info{
+            position: absolute;
+            @include flexBox(flex, column);
+            @include positionMixin(0, 0, 0, 0, absolute, #fff);
+            transform: translateY(-50rem);
+            padding: 2rem;
+            color: #444;
+            & > span:first-of-type{
+                font-size: 3rem;
+                color: darkorange;
+            }
+            & > span:last-of-type{
+                color: darkblue;
+                .see-more{
+                    color: tomato;
+                    cursor: pointer;
+                }
+            }
+            .techs{
+                margin-top: 2rem;
+                @include flexBox(flex, row);
+                gap: 2rem;
+                flex-wrap: wrap;
+                span{
+                    background-color: #444;
+                    color: #fff;
+                    padding: 0.5rem 2rem;
+                    border-radius: 5px;
+                    font-size: 1.4rem;
+                }
+            }
+            .live-gh-btns{
+                margin-top: 2rem;
+                gap: 2rem;
+                @include flexBox(flex, row);
+                button{
+                    font-size: 1.4rem;
+                    position: relative;
+                    &:first-child{
+                        @include linkOrButton(tomato);
+                    }
+                    &:last-child{
+                        @include linkOrButton(green);
+                    }
+                    &::before{
+                        content: '';
+                        @include positionMixin(0, 0, none, 0, absolute, #f00);
+                        opacity: 0.1;
+                        animation: animateButton 1s linear infinite;
+                    }
+                }
+            }
+        } 
+    }
+    .btns{
+        @include flexBox(flex, row);
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 0.8rem;
+        button{
+            @include linkOrButton(darkcyan);
+        }
+    }
+}
+
+@keyframes animateButton {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+.whileHoverOnProjectImg{
+    animation: animateInfo1 0.4s forwards;
+}
+
+.whileLeaveProjectImg{
+    animation: animateInfo2 0.4s linear;
+}
+
+@keyframes animateInfo1 {
+    0%{
+        transform: translateY(-50rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes animateInfo2 {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-50rem);
+    }
+}
