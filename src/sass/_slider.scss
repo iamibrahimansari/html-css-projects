@@ -54,12 +54,18 @@
                     color: tomato;
                     cursor: pointer;
                 }
+                @media screen and (width <= 890px){
+                    display: none;
+                }
             }
             .techs{
                 margin-top: 2rem;
                 @include flexBox(flex, row);
                 gap: 2rem;
                 flex-wrap: wrap;
+                @media screen and (width <= 1290px){
+                    display: none;
+                }
                 span{
                     background-color: #444;
                     color: #fff;
@@ -72,7 +78,7 @@
                 margin-top: 2rem;
                 gap: 2rem;
                 @include flexBox(flex, row);
-                button{
+                *{
                     font-size: 1.4rem;
                     position: relative;
                     &:first-child{

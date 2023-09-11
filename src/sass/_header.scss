@@ -8,42 +8,43 @@
     color: rgb(255, 255, 0);
     span:first-child{
         font-size: 3rem;
-        animation: animateHeading 0.5s linear;
+        animation: animateHeading 1s linear;
         letter-spacing: 5px;
+        @media screen and (width <= 550px){
+            font-size: 2rem;
+        }
+        @media screen and (width <= 350px){
+            font-size: 1.6rem;
+        }
     }
     span:last-child{
-        animation: animateDesc 0.5s linear;
+        animation: animateDesc 1s linear;
         letter-spacing: 2px;
+        @media screen and (width <= 550px){
+            font-size: 1.2rem;
+        }
     }
 }
 
 
 @keyframes animateHeading {
     0%{
-        transform: scale(0);
+        transform: translateX(-50rem);
         opacity: 0.5;
-        color: tomato;
     }
     100%{
-        transform: scale(1);
-        color: orange;
+        transform: translateX(0);
         opacity: 1;
     }
 }
 
 @keyframes animateDesc {
     0%{
-        transform: translateY(10rem);
+        transform: translateX(50rem);
         opacity: 0.5;
-        color: tomato;
-    }
-    50%{
-        transform: translate(0) scale(0.7);
-        opacity: 1;
-        color: pink;
     }
     100%{
-        transform: scale(1);
-        color: orange;
+        transform: translateX(0);
+        opacity: 1;
     }
 }
